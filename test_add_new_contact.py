@@ -19,6 +19,7 @@ class T2(unittest.TestCase):
                        "email3@mail.ru", "yandex.ru", "4", "August", "1991", "1", "December", "2000", "TestAddress",
                        "Moscow", "TestNotes"))
         self.logout(wd)
+
     def test_alt(self):
         wd = self.wd
         wd.get("http://localhost/addressbook/")
