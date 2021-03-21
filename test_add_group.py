@@ -50,7 +50,7 @@ class TestAddGroup(unittest.TestCase):
 
     def open_home_page(self, wd):
         # Open homepage
-        wd.get("http://localhost/addressbook/group.php")
+        wd.get("http://localhost/addressbook")
 
     def open_groups_page(self, wd):
         # Open group page
