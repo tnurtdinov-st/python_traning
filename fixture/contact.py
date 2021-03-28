@@ -1,8 +1,18 @@
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoAlertPresentException
 
 class ContactHepler:
     def __init__(self, app):
         self.app = app
+
+    def open_home_page(self):
+        wd = self.app.wd
+        # Open homepage
+        wd.get("http://localhost/addressbook")
 
     def fill_data(self, contact):
         wd = self.app.wd
@@ -54,7 +64,7 @@ class ContactHepler:
         wd.find_element_by_name("ayear").click()
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys(contact.ayear)
-        wd.find_element_by_name("theform").click()
+        #wd.find_element_by_name("theform").click()
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
         wd.find_element_by_name("address2").send_keys(contact.address2)
@@ -63,10 +73,39 @@ class ContactHepler:
         wd.find_element_by_name("phone2").send_keys(contact.phone2)
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.notes1)
+
+    def submit(self):
+        wd = self.app.wd
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
+
+    def update(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//form[@action='edit.php']").click()
+        wd.find_element_by_name("update").click()
 
     def add_new_contact(self):
         wd = self.app.wd
         # Add new contact
         wd.find_element_by_link_text("home").click()
         wd.find_element_by_link_text("add new").click()
+
+    def delete_contact(self):
+        wd = self.app.wd
+        self.open_home_page()
+        # Select contact
+        wd.find_element_by_name("selected[]").click()
+        # Delete contact
+        wd.find_element_by_xpath("//input[@value='Delete']").click()        # Click OK
+        wd.switch_to_alert().accept()
+
+    def close_alert_and_get_its_text(self):
+        alert = self.app.wd.switch_to_alert()
+        alert.accept()
+
+    def edit_contact(self):
+        wd = self.app.wd
+        self.open_home_page()
+        # Select contact
+        wd.find_element_by_name("selected[]").click()
+        # edit contact
+        wd.find_element_by_xpath("//img[@alt='Edit']").click()
