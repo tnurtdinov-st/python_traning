@@ -1,20 +1,11 @@
-from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
-
-class Application:
-    def __init__(self):
-        self.wd = webdriver.Firefox()
-        self.wd.implicitly_wait(30)
-
-    def logout(self):
-        wd = self.wd
-        # Logout
-        wd.find_element_by_link_text("home").click()
-        wd.find_element_by_link_text("Logout").click()
+class ContactHepler:
+    def __init__(self, app):
+        self.app = app
 
     def fill_data(self, contact):
-        wd = self.wd
+        wd = self.app.wd
         # Fill data
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -75,21 +66,7 @@ class Application:
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
     def add_new_contact(self):
-        wd = self.wd
+        wd = self.app.wd
         # Add new contact
         wd.find_element_by_link_text("home").click()
         wd.find_element_by_link_text("add new").click()
-
-    def login(self, username, password):
-        wd = self.wd
-        wd.get("http://localhost/addressbook/")
-        # Login
-        wd.find_element_by_name("user").click()
-        wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys(username)
-        wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys(password)
-        wd.find_element_by_xpath("//input[@value='Login']").click()
-
-    def destroy(self):
-        self.wd.quit()
