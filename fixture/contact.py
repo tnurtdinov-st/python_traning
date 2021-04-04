@@ -109,3 +109,9 @@ class ContactHepler:
         wd.find_element_by_name("selected[]").click()
         # edit contact
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
+
+    def count(self):
+        wd = self.app.wd
+        self.open_home_page()
+        return len(wd.find_elements_by_name("selected[]"))
+

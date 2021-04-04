@@ -4,7 +4,7 @@ from fixture.application import Application
 fixture = None
 
 @pytest.fixture
-def app(request):
+def app():
     global fixture
     if fixture is None:
         fixture = Application()
