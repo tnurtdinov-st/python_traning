@@ -12,6 +12,8 @@ class ContactHepler:
     def open_home_page(self):
         wd = self.app.wd
         # Open homepage
+        if not (wd.current_url.endswith("/addressbook")):
+            wd.find_element_by_link_text("home").click()
         wd.get("http://localhost/addressbook")
 
     def fill_data(self, contact):

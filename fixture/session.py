@@ -6,12 +6,19 @@ class SessionHelper:
     def login(self, username, password):
         wd = self.app.wd
         # Login
-        self.app.open_home_page()
+        self.open_home_page()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//input[@value='Login']").click()
+
+    def open_home_page(self):
+        wd = self.app.wd
+        # Open homepage
+        if not (wd.current_url.endswith("/addressbook")):
+            wd.get("http://localhost/addressbook")
+        wd.get("http://localhost/addressbook")
 
     def ensure_login(self, username, password):
         wd = self.app.wd
@@ -40,7 +47,7 @@ class SessionHelper:
 
     def is_logged_in_as(self, username):
         wd = self.app.wd
-        return wd.find_element_by_xpath("//div/div[1]/form/b").text == "("+username+")"
+        return wd.find_element_by_xpath("//div[@id='top']/form/b").text == "("+username+")"
 
 
 
