@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
+from model.contact import Contact
 
 class ContactHepler:
     def __init__(self, app):
@@ -117,3 +118,8 @@ class ContactHepler:
         self.open_home_page()
         return len(wd.find_elements_by_name("selected[]"))
 
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.open_home_page()
+        id = int(wd.find_element_by_id("search_count").text)
+        return id
