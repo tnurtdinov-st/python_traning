@@ -106,6 +106,7 @@ class ContactHepler:
         wd.switch_to_alert().accept()
         self.contact_cache = None
 
+
     def close_alert_and_get_its_text(self):
         alert = self.app.wd.switch_to_alert()
         alert.accept()
