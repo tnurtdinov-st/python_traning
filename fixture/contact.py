@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from model.contact import Contact
+from selenium import webdriver
 
 class ContactHepler:
     def __init__(self, app):
@@ -80,17 +81,20 @@ class ContactHepler:
     def submit(self):
         wd = self.app.wd
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
+        self.contact_cache = None
 
     def update(self):
         wd = self.app.wd
         wd.find_element_by_xpath("//form[@action='edit.php']").click()
         wd.find_element_by_name("update").click()
+        self.contact_cache = None
 
     def add_new_contact(self):
         wd = self.app.wd
         # Add new contact
         wd.find_element_by_link_text("home").click()
         wd.find_element_by_link_text("add new").click()
+        self.contact_cache = None
 
     def delete_contact(self):
         wd = self.app.wd
@@ -100,6 +104,7 @@ class ContactHepler:
         # Delete contact
         wd.find_element_by_xpath("//input[@value='Delete']").click()        # Click OK
         wd.switch_to_alert().accept()
+        self.contact_cache = None
 
     def close_alert_and_get_its_text(self):
         alert = self.app.wd.switch_to_alert()
@@ -112,14 +117,18 @@ class ContactHepler:
         wd.find_element_by_name("selected[]").click()
         # edit contact
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        self.contact_cache = None
 
     def count(self):
         wd = self.app.wd
         self.open_home_page()
         return len(wd.find_elements_by_name("selected[]"))
 
+    contact_cache = None
+
     def get_contact_list(self):
-        wd = self.app.wd
-        self.open_home_page()
-        id = int(wd.find_element_by_id("search_count").text)
-        return id
+        if self.contact_cache is None:
+            wd = self.app.wd
+            self.open_home_page()
+            self.contact_cache = int(wd.find_element_by_id("search_count").text)
+        return self.contact_cache

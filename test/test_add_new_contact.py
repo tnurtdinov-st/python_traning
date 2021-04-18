@@ -10,6 +10,7 @@ def test_main(app):
                    "Moscow", "TestNotes")
     app.contact.fill_data(contact)
     app.contact.submit()
+    assert old_contact + 1 == app.contact.count()
     new_contact = app.contact.get_contact_list()
     assert old_contact + 1 == new_contact
 
