@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from model.contact import Contact
+from random import randrange
 
 def test_edit_main(app):
     if app.contact.count() == 0:
@@ -11,8 +12,9 @@ def test_edit_main(app):
         app.contact.fill_data(contact)
         app.contact.submit()
     old_contact = app.contact.get_contact_list()
-    app.contact.edit_contact()
-    contact=Contact("Test1", "Test2", "Test3", "Test4", "Title3", "Company1", "Moscow1", "11111",
+    index = randrange(old_contact)
+    app.contact.edit_contact(index)
+    contact = Contact("Test1", "Test2", "Test3", "Test4", "Title3", "Company1", "Moscow1", "11111",
                    "1111", "11111", "33333", "email1222@mail.ru", "email2333@mail.ru",
                    "email3444@mail.ru", "rambler.ru", "3", "December", "1990", "1", "December", "2000", "Address",
                    "Moscow111", "Notes")

@@ -1,4 +1,5 @@
 from model.contact import Contact
+from random import randrange
 
 def test_del_first_group(app):
     if app.contact.count() == 0:
@@ -10,6 +11,7 @@ def test_del_first_group(app):
         app.contact.fill_data(contact)
         app.contact.submit()
     old_contact = app.contact.get_contact_list()
-    app.contact.delete_contact()
+    index = randrange(old_contact)
+    app.contact.delete_contact_by_index(index)
     new_contact = app.contact.get_contact_list()
     assert old_contact - 1 == new_contact

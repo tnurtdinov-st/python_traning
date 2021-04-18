@@ -96,11 +96,11 @@ class ContactHepler:
         wd.find_element_by_link_text("add new").click()
         self.contact_cache = None
 
-    def delete_contact(self):
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.open_home_page()
         # Select contact
-        wd.find_element_by_name("selected[]").click()
+        self.select_contact_by_index(index)
         # Delete contact
         wd.find_element_by_xpath("//input[@value='Delete']").click()        # Click OK
         wd.switch_to_alert().accept()
@@ -110,14 +110,18 @@ class ContactHepler:
         alert = self.app.wd.switch_to_alert()
         alert.accept()
 
-    def edit_contact(self):
+    def edit_contact(self, index):
         wd = self.app.wd
         self.open_home_page()
-        # Select contact
-        wd.find_element_by_name("selected[]").click()
+        self.select_contact_by_index(index)
         # edit contact
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         self.contact_cache = None
+
+    def select_contact_by_index(self, index):
+        # Select contact
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
 
     def count(self):
         wd = self.app.wd

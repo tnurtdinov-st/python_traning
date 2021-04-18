@@ -43,19 +43,34 @@ class GroupHelper:
              wd.find_element_by_link_text("groups").click()
 
     def delete_first_group(self):
-        wd = self.app.wds
+        self.delete_group_by_index(0)
+
+    def select_first_group(self):
+        wd = self.app.wd
+        # select first group
+        self.select_group_by_index(0)
+
+    def delete_group_by_index(self, index):
+        wd = self.app.wd
         self.open_groups_page()
-        #select first group
-        wd.find_element_by_name("selected[]").click()
-        #submit deletion
+        # select first group
+        self.select_group_by_index(index)
+        # submit deletion
         wd.find_element_by_name("delete").click()
         self.return_to_group_page()
         self.group_cache = None
 
+    def select_group_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
+
     def edit_group(self, group):
+        self.edit_group_by_index(0, group)
+
+    def edit_group_by_index(self, index, group):
         wd = self.app.wd
         self.open_groups_page()
-        self.select_first_group()
+        self.select_group_by_index(index)
         wd.find_element_by_name("edit").click()
         self.fio_group_form(group)
         # Submit group update
@@ -63,22 +78,20 @@ class GroupHelper:
         self.return_to_group_page()
         self.group_cache = None
 
-
-    def select_first_group(self):
-        wd = self.app.wd
-        # select first group
-        wd.find_element_by_name("selected[]").click()
-
     def modify_first_group(self, new_group_data):
+        self.modify_group_by_index(0, new_group_data)
+
+    def modify_group_by_index(self, index, new_group_data):
         wd = self.app.wd
         self.open_groups_page()
-        self.select_first_group()
+        self.select_group_by_index(index)
         # Edit name
         wd.find_element_by_name("edit").click()
         self.fio_group_form(new_group_data)
         # Submit group update
         wd.find_element_by_name("update").click()
         self.return_to_group_page()
+        self.group_cache = None
 
     def count(self):
         wd = self.app.wd
