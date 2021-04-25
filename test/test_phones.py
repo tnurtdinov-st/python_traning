@@ -15,8 +15,8 @@ def test_phones_on_view_page(app):
     assert contact_from_viewpage.phone2 == contact_from_editpage.phone2
 
 def test_random_person_info(app):
-    old_contact = app.contact.get_contact_list()
-    index = randrange(len(old_contact))
+    contact = app.contact.get_contact_list()
+    index = randrange(len(contact))
     contact_from_homepage = app.contact.get_contact_list()[index]
     contact_from_editpage = app.contact.get_contact_info_from_edit_page(index)
     assert contact_from_homepage.firstname == contact_from_editpage.firstname
@@ -32,7 +32,6 @@ def merge_phones_like_on_homepage(contact):
 
 def merge_emails_like_on_homepage(contact):
     return "\n".join(filter(lambda x: x !="", map(lambda x: clear(x), filter(lambda x: x is not None, [contact.email1, contact.email2, contact.email3]))))
-
 
 def clear(s):
     return re.sub("[() -]", "", s)
