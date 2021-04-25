@@ -12,13 +12,6 @@ class ContactHepler:
     def __init__(self, app):
         self.app = app
 
-    def open_home_page(self):
-        wd = self.app.wd
-        # Open homepage
-        if not (wd.current_url.endswith("/addressbook")):
-            wd.find_element_by_link_text("home").click()
-        wd.get("http://localhost/addressbook")
-
     def fill_data(self, contact):
         wd = self.app.wd
         # Fill data
@@ -99,9 +92,9 @@ class ContactHepler:
 
     def delete_contact_by_index(self, index):
         wd = self.app.wd
-        self.open_home_page()
+        self.app.open_home_page()
         # Select contact
-        self.select_contact_by_index_and_edit(index)
+        self.select_contact_by_index(index)
         # Delete contact
         wd.find_element_by_xpath("//input[@value='Delete']").click()        # Click OK
         wd.switch_to_alert().accept()
@@ -114,7 +107,7 @@ class ContactHepler:
 
     def edit_contact(self, index):
         wd = self.app.wd
-        wd.open_home_page()
+        self.app.open_home_page()
         self.select_contact_by_index_and_edit(index)
         # edit contact
         #wd.find_element_by_xpath("//img[@alt='Edit']").click()
@@ -123,22 +116,30 @@ class ContactHepler:
     def select_contact_by_index_and_edit(self, index):
         # Select contact
         wd = self.app.wd
-        self.open_home_page()
+        self.app.open_home_page()
         row = wd.find_elements_by_name("entry")[index]
         cell = row.find_elements_by_tag_name("td")[7]
         cell.find_element_by_tag_name("a").click()
 
+    def select_contact_by_index(self, index):
+        # Select contact
+        wd = self.app.wd
+        self.app.open_home_page()
+        row = wd.find_elements_by_name("entry")[index]
+        cell = row.find_elements_by_tag_name("td")[0]
+        cell.find_element_by_tag_name("input").click()
+
     def open_concat_view_by_index(self, index):
         # Select contact
         wd = self.app.wd
-        self.open_home_page()
+        self.app.open_home_page()
         row = wd.find_elements_by_name("entry")[index]
         cell = row.find_elements_by_tag_name("td")[6]
         cell.find_element_by_tag_name("a").click()
 
     def count(self):
         wd = self.app.wd
-        self.open_home_page()
+        self.app.open_home_page()
         return len(wd.find_elements_by_name("selected[]"))
 
     contact_cache = None
@@ -146,7 +147,7 @@ class ContactHepler:
     def get_contact_list(self):
         if self.contact_cache is None:
             wd = self.app.wd
-            self.open_home_page()
+            self.app.open_home_page()
             self.contact_cache = []
             for row in wd.find_elements_by_name("entry"):
                 cells = row.find_elements_by_tag_name("td")

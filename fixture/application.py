@@ -32,4 +32,7 @@ class Application:
 
     def open_home_page(self):
         wd = self.wd
+        # Open homepage
+        if not (wd.current_url.endswith("/addressbook")):
+            wd.get("http://localhost/addressbook")
         wd.get("http://localhost/addressbook")
