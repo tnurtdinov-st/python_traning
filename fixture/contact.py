@@ -114,7 +114,7 @@ class ContactHepler:
 
     def edit_contact(self, index):
         wd = self.app.wd
-        self.open_home_page()
+        wd.open_home_page()
         self.select_contact_by_index_and_edit(index)
         # edit contact
         #wd.find_element_by_xpath("//img[@alt='Edit']").click()
