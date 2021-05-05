@@ -100,6 +100,16 @@ class ContactHepler:
         wd.switch_to_alert().accept()
         self.contact_cache = None
 
+    def delete_contact_by_id(self, id):
+        wd = self.app.wd
+        self.app.open_home_page()
+        # Select contact
+        self.select_contact_by_id(id)
+        # Delete contact
+        wd.find_element_by_xpath("//input[@value='Delete']").click()        # Click OK
+        wd.switch_to_alert().accept()
+        self.contact_cache = None
+
 
     def close_alert_and_get_its_text(self):
         alert = self.app.wd.switch_to_alert()
@@ -113,6 +123,15 @@ class ContactHepler:
         #wd.find_element_by_xpath("//img[@alt='Edit']").click()
         self.contact_cache = None
 
+    def edit_contact_by_id(self, id):
+        wd = self.app.wd
+        self.app.open_home_page()
+        index = self.select_contact_by_id_and_edit(id)
+        # edit contact
+        #wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        self.contact_cache = None
+        return index
+
     def select_contact_by_index_and_edit(self, index):
         # Select contact
         wd = self.app.wd
@@ -121,6 +140,26 @@ class ContactHepler:
         cell = row.find_elements_by_tag_name("td")[7]
         cell.find_element_by_tag_name("a").click()
 
+    def select_contact_by_id_and_edit(self, id):
+        # Select contact
+        wd = self.app.wd
+        self.app.open_home_page()
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+        row = wd.find_elements_by_name("entry")
+        for i in row:
+            input = i.find_element_by_name("selected[]")
+            value = input.get_attribute('value')
+            if value == id:
+                cell = i.find_elements_by_tag_name("td")[7]
+                cell.find_element_by_tag_name("a").click()
+                index = i
+                break
+        return index
+        #row_alt=wd.find_elements_by_css_selector("input[value='%s']" % id)
+        #cell = row_alt.find_elements_by_tag_name("td")[7]
+        #cell.find_element_by_tag_name("a").click()
+
+
     def select_contact_by_index(self, index):
         # Select contact
         wd = self.app.wd
@@ -128,6 +167,12 @@ class ContactHepler:
         row = wd.find_elements_by_name("entry")[index]
         cell = row.find_elements_by_tag_name("td")[0]
         cell.find_element_by_tag_name("input").click()
+
+    def select_contact_by_id(self, id):
+        # Select contact
+        wd = self.app.wd
+        self.app.open_home_page()
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
 
     def open_concat_view_by_index(self, index):
         # Select contact
