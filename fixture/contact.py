@@ -7,6 +7,7 @@ from selenium.common.exceptions import NoAlertPresentException
 from model.contact import Contact
 from selenium import webdriver
 import re
+import time
 
 class ContactHepler:
     def __init__(self, app):
@@ -257,5 +258,4 @@ class ContactHepler:
         Select(wd.find_element_by_name("group")).select_by_value(group_id)
         wd.find_element_by_xpath("(//option[@value='"+group_id+"'])[2]").click()
         wd.find_element_by_css_selector("input[value='%s']" % id).click()
-        wd.find_element_by_xpath("//input[@value='Delete']").click()  # Click OK
-        wd.switch_to_alert().accept()
+        wd.find_element_by_name("remove").click()

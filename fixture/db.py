@@ -63,7 +63,7 @@ class DbFixture:
         list = []
         cursor = self.connection.cursor()
         try:
-            cursor.execute("select addressbook.id, addressbook.firstname, addressbook.lastname from addressbook where addressbook.id='"+id+"'")
+            cursor.execute("select addressbook.id, addressbook.firstname, addressbook.lastname from addressbook, address_in_groups  where addressbook.id='"+id+"' and addressbook.id=address_in_groups.id")
             for row in cursor:
                 (id, firstname, lastname) = row
                 list.append(Contact(id=str(id), firstname=firstname, lastname=lastname))
