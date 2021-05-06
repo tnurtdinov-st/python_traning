@@ -234,5 +234,28 @@ class ContactHepler:
 
 
 
+    def add_contact_to_group(self, id, group_id):
+        wd = self.app.wd
+        self.app.open_home_page()
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+        wd.find_element_by_name("to_group").click()
+        #Select(wd.find_element_by_name("to_group")).select_by_visible_text("New1")
+        Select(wd.find_element_by_name("to_group")).select_by_value(group_id)
+        wd.find_element_by_xpath("(//option[@value='"+group_id+"'])[2]").click()
+        wd.find_element_by_name("add").click()
 
+    def check_contact_in_new_group(self, id, group_id):
+        wd = self.app.wd
+        self.app.open_home_page()
+        Select(wd.find_element_by_name("group")).select_by_value(group_id)
+        wd.find_element_by_xpath("(//option[@value='"+group_id+"'])[2]").click()
+        wd.find_element_by_css_selector("input[value='%s']" % id)
 
+    def delete_contact_from_group(self, id, group_id):
+        wd = self.app.wd
+        self.app.open_home_page()
+        Select(wd.find_element_by_name("group")).select_by_value(group_id)
+        wd.find_element_by_xpath("(//option[@value='"+group_id+"'])[2]").click()
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+        wd.find_element_by_xpath("//input[@value='Delete']").click()  # Click OK
+        wd.switch_to_alert().accept()
