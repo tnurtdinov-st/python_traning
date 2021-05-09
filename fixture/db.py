@@ -35,11 +35,35 @@ class DbFixture:
             cursor.close()
         return list
 
+    def get_contact_list_without_group(self):
+        list = []
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("SELECT id, firstname, lastname  FROM addressbook WHERE deprecated='0000-00-00 00:00:00' and id NOT IN ( SELECT id FROM address_in_groups WHERE address_in_groups.id = addressbook.id)")
+            for row in cursor:
+                (id, firstname, lastname) = row
+                list.append(Contact(id=str(id), firstname=firstname, lastname=lastname))
+        finally:
+            cursor.close()
+        return list
+
+    def get_groups_without_contacts_list(self):
+        list = []
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("SELECT group_id, group_name, group_header, group_footer FROM group_list WHERE group_id NOT IN ( SELECT group_id FROM address_in_groups WHERE address_in_groups.group_id = group_list.group_id)")
+            for row in cursor:
+                (id, name, header, footer) = row
+                list.append(Group(id=str(id), name=name, header=header, footer=footer))
+        finally:
+            cursor.close()
+        return list
+
     def get_groups_with_contacts_list(self):
         list = []
         cursor = self.connection.cursor()
         try:
-            cursor.execute("select group_list.group_id, group_list.group_name, group_list.group_header, group_list.group_footer from group_list, address_in_groups where group_list.group_id = address_in_groups.group_id")
+            cursor.execute("SELECT group_id, group_name, group_header, group_footer FROM group_list WHERE group_id IN ( SELECT group_id FROM address_in_groups WHERE address_in_groups.group_id = group_list.group_id)")
             for row in cursor:
                 (id, name, header, footer) = row
                 list.append(Group(id=str(id), name=name, header=header, footer=footer))

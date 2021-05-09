@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from model.contact import Contact
+from model.group import Group
+
 import random
 
 def test_add_contact_to_group(app, db):
-    if len(db.get_contact_list()) == 0:
+    #Добавление контакта если нет контактов без группы
+    if len(db.get_contact_list_without_group()) == 0:
         app.contact.add_new_contact()
         contact = Contact("Test", "Test", "Testov", "SuperTest", "Title", "Company", "Moscow", "88005553535",
                           "88005553535", "88005553535", "88005553535", "email1@mail.ru", "email2@mail.ru",
@@ -11,9 +14,14 @@ def test_add_contact_to_group(app, db):
                           "Moscow", "TestNotes")
         app.contact.fill_data(contact)
         app.contact.submit()
-    contact_list = db.get_contact_list()
+    #Добавление пустой группы если нет группы без контактов
+    if len(db.get_groups_without_contacts_list()) == 0:
+        app.group.create(Group(name='test'))
+    #Список контактов БЕЗ группы
+    contact_list = db.get_contact_list_without_group()
     contact = random.choice(contact_list)
-    groups_list = db.get_group_list()
+    #Список групп БЕЗ контактов
+    groups_list = db.get_groups_without_contacts_list()
     group = random.choice(groups_list)
     #Добавление контакта в группу
     app.contact.add_contact_to_group(contact.id, group.id)
