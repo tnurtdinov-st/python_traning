@@ -5,8 +5,11 @@ from model.group import Group
 import random
 
 def test_add_contact_to_group(app, db):
-    #Добавление контакта если нет контактов без группы
-    if len(db.get_contact_list_without_group()) == 0:
+    #Добавление пустой группы если нет группы
+    if len(db.get_group_list()) == 0:
+        app.group.create(Group(name='test'))
+    #Добавление контакта если нет контактов
+    if len(db.get_contact_list()) == 0:
         app.contact.add_new_contact()
         contact = Contact("Test", "Test", "Testov", "SuperTest", "Title", "Company", "Moscow", "88005553535",
                           "88005553535", "88005553535", "88005553535", "email1@mail.ru", "email2@mail.ru",
@@ -14,16 +17,10 @@ def test_add_contact_to_group(app, db):
                           "Moscow", "TestNotes")
         app.contact.fill_data(contact)
         app.contact.submit()
-    #Добавление пустой группы если нет группы без контактов
-    if len(db.get_groups_without_contacts_list()) == 0:
-        app.group.create(Group(name='test'))
-    #Список контактов БЕЗ группы
-    contact_list = db.get_contact_list_without_group()
-    contact = random.choice(contact_list)
-    #Список групп БЕЗ контактов
-    groups_list = db.get_groups_without_contacts_list()
-    group = random.choice(groups_list)
-    #Добавление контакта в группу
+    contact = random.choice(db.get_contact_list())
+    group, old_contact = app.group.find_group_to_add_contact(contact)
     app.contact.add_contact_to_group(contact.id, group.id)
-    #Переход в группу и проверка наличия контакта с id
-    app.contact.check_contact_in_new_group(contact.id, group.id)
+    new_contact = db.get_contacts_from_certian_group(group.id)
+    old_contact.append(contact)
+    assert sorted(old_contact, key=Contact.id_or_max) == sorted(new_contact, key=Contact.id_or_max)
+    assert group.id in db.get_group_id_of_contact(contact)

@@ -1,4 +1,6 @@
 from model.group import Group
+import random
+from model.contact import Contact
 
 class GroupHelper:
     def __init__(self, app):
@@ -137,5 +139,38 @@ class GroupHelper:
                 self.group_cache.append(Group(name=text, id=id))
         return list(self.group_cache)
 
+    def find_group_to_add_contact(self, Contact):
+        wd = self.app.wd
+        self.app.open_home_page()
+        groups = self.get_group_list()
+        self.app.open_home_page()
+        while 1:
+            group = random.choice(groups)
+            wd.find_element_by_name("group").send_keys(group.name)
+            wd.find_element_by_css_selector("body").click()
+            contacts = self.get_contact_list_in_group()
+            if Contact not in contacts:
+                wd.find_element_by_name("group").send_keys("[all]")
+                wd.find_element_by_css_selector("body").click()
+                return group, contacts
 
+    def get_contact_list_in_group(self):
+            wd = self.app.wd
+            self.contact_cache = []
+            for row in wd.find_elements_by_name("entry"):
+                cells = row.find_elements_by_tag_name("td")
+                firstname = cells[2].text
+                lastname = cells[1].text
+                id = cells[0].find_element_by_tag_name("input").get_attribute("value")
+                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id))
+            return list(self.contact_cache)
 
+    def group_contacts(self, Group):
+        wd = self.app.wd
+        self.app.open_home_page()
+        wd.find_element_by_name("group").send_keys(Group.name)
+        wd.find_element_by_css_selector("body").click()
+        contacts = self.get_contact_list_in_group()
+        wd.find_element_by_name("group").send_keys("[all]")
+        wd.find_element_by_css_selector("body").click()
+        return contacts
