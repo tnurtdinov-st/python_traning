@@ -10,7 +10,7 @@ def test_delete_contact_to_group(app, db):
         if len(db.get_group_list()) == 0:
             app.group.create(Group(name='test'))
             # проверка есть ли контакты без групп
-        if len(db.get_contact_list_without_group()) == 0:
+        if len(db.get_contacts_not_in_group()) == 0:
             app.contact.add_new_contact()
             contact = Contact("Test", "Test", "Testov", "SuperTest", "Title", "Company", "Moscow", "88005553535",
                               "88005553535", "88005553535", "88005553535", "email1@mail.ru", "email2@mail.ru",
@@ -20,7 +20,7 @@ def test_delete_contact_to_group(app, db):
             app.contact.fill_data(contact)
             app.contact.submit()
         #Добавление контакта в групп3
-        contact_list = db.get_contact_list_without_group()
+        contact_list = db.get_contacts_not_in_group()
         contact = random.choice(contact_list)
         # Список групп БЕЗ контактов
         groups_list = db.get_groups_without_contacts_list()
@@ -32,7 +32,7 @@ def test_delete_contact_to_group(app, db):
     groups_list = db.get_groups_with_contacts_list()
     group = random.choice(groups_list)
     #Выбор рандомного контакта из группы
-    contact_list = db.get_contacts_from_certian_group(group.id)
+    contact_list = db.get_contacts_in_group(group.id)
     contact = random.choice(contact_list)
     #Удаление контакта из группы
     app.contact.delete_contact_from_group(contact.id, group.id)

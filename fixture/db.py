@@ -35,7 +35,7 @@ class DbFixture:
             cursor.close()
         return list
 
-    def get_contact_list_without_group(self):
+    def get_contacts_not_in_group(self):
         list = []
         cursor = self.connection.cursor()
         try:
@@ -59,6 +59,18 @@ class DbFixture:
             cursor.close()
         return list
 
+    def get_groups_without_contact(self, contact):
+        list = []
+        cursor = self.connection.cursor()
+        try:
+            cursor.execute("SELECT group_id, group_name, group_header, group_footer FROM group_list WHERE group_id IN ( SELECT group_id FROM address_in_groups WHERE address_in_groups.id !="+contact+")")
+            for row in cursor:
+                (id, name, header, footer) = row
+                list.append(Group(id=str(id), name=name, header=header, footer=footer))
+        finally:
+            cursor.close()
+        return list
+
     def get_groups_with_contacts_list(self):
         list = []
         cursor = self.connection.cursor()
@@ -71,7 +83,7 @@ class DbFixture:
             cursor.close()
         return list
 
-    def get_contacts_from_certian_group(self, group_id):
+    def get_contacts_in_group(self, group_id):
         list = []
         cursor = self.connection.cursor()
         try:
