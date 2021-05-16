@@ -1,7 +1,7 @@
 from model.group import Group
 import random
 from model.contact import Contact
-
+import allure
 class GroupHelper:
     def __init__(self, app):
         self.app = app
@@ -12,6 +12,7 @@ class GroupHelper:
         if not (wd.current_url.endswith("/group.php") and len(wd.find_elements_by_name("new")) > 0):
              wd.find_element_by_link_text("groups").click()
 
+    @allure.step('When I add a group "{group}" to the list')
     def create(self, group):
         wd = self.app.wd
         # Init group creation

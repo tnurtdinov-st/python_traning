@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: assert [1:TestGroup:...est:Test, ...] == [1:TestGroup:...est:Test, ...]\n  Left contains one more item: None:name<o? ok q:headerTHwK7) |a'1~|P {Wt:footer{\n  Use -v to get the full diff",
+      "children" : [ {
+        "name" : "test_add_group[None:name<o? ok q:headerTHwK7) |a'1~|P {Wt:footer{]",
+        "uid" : "d12aed407504413e",
+        "parentUid" : "1706cd21b4e2989cf91556689a5ff3f0",
+        "status" : "failed",
+        "time" : {
+          "start" : 1621192016187,
+          "stop" : 1621192017173,
+          "duration" : 986
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "None:name<o? ok q:headerTHwK7) |a'1~|P {Wt:footer{" ]
+      } ],
+      "uid" : "1706cd21b4e2989cf91556689a5ff3f0"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

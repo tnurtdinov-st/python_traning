@@ -1,0 +1,117 @@
+{
+  "46ffc88f41f190e039237501ce4696b1" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "c90b27ddfd254723",
+      "status" : "passed",
+      "time" : {
+        "start" : 1621192017300,
+        "stop" : 1621192018309,
+        "duration" : 1009
+      }
+    } ]
+  },
+  "753d589908427a7d7a35d2be83e09f01" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e638814ad1e75c8a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1621192013959,
+        "stop" : 1621192015040,
+        "duration" : 1081
+      }
+    } ]
+  },
+  "95e3cc0be1eaf75e595c2c156b9ee2a5" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "d12aed407504413e",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: assert [1:TestGroup:...est:Test, ...] == [1:TestGroup:...est:Test, ...]\n  Left contains one more item: None:name<o? ok q:headerTHwK7) |a'1~|P {Wt:footer{\n  Use -v to get the full diff",
+      "time" : {
+        "start" : 1621192016187,
+        "stop" : 1621192017173,
+        "duration" : 986
+      }
+    } ]
+  },
+  "bf231f5d259717a8e2746e904d2125e9" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "a11ce1115f5802ee",
+      "status" : "passed",
+      "time" : {
+        "start" : 1621192015084,
+        "stop" : 1621192016142,
+        "duration" : 1058
+      }
+    } ]
+  },
+  "7da87082d99601c0bd5267124c851f03" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e0d6b1793c758c7f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1621192018359,
+        "stop" : 1621192019365,
+        "duration" : 1006
+      }
+    } ]
+  },
+  "88e71eba3883d6b7c4faf1aa309967a5" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "a017ff7fac78eba6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1621192012737,
+        "stop" : 1621192013909,
+        "duration" : 1172
+      }
+    } ]
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "uid" : "104655d191b665f5",
+  "name" : "test_add_group[None:name<o? ok q:headerTHwK7) |a'1~|P {Wt:footer{]",
+  "fullName" : "test.test_add_group#test_add_group",
+  "historyId" : "95e3cc0be1eaf75e595c2c156b9ee2a5",
+  "time" : {
+    "start" : 1621190948256,
+    "stop" : 1621190949269,
+    "duration" : 1013
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert [1:TestGroup:...est:Test, ...] == [1:TestGroup:...est:Test, ...]\n  Left contains one more item: None:name<o? ok q:headerTHwK7) |a'1~|P {Wt:footer{\n  Use -v to get the full diff",
+  "statusTrace" : "app = <fixture.application.Application object at 0x000001EEBAA4ADF0>\ndb = <fixture.db.DbFixture object at 0x000001EEBAA4AEB0>\njson_groups = None:name<o? ok q:headerTHwK7) |a'1~|P {Wt:footer{\n\n    def test_add_group(app, db, json_groups):\n        group = json_groups\n        old_groups = db.get_group_list()\n        app.group.create(group)\n        new_groups = db.get_group_list()\n        old_groups.append(group)\n>       assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)\nE       AssertionError: assert [1:TestGroup:...est:Test, ...] == [1:TestGroup:...est:Test, ...]\nE         Left contains one more item: None:name<o? ok q:headerTHwK7) |a'1~|P {Wt:footer{\nE         Use -v to get the full diff\n\ntest\\test_add_group.py:10: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "app",
+    "time" : {
+      "start" : 1621190948212,
+      "stop" : 1621190948256,
+      "duration" : 44
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "stop",
+    "time" : {
+      "start" : 1621190937902,
+      "stop" : 1621190937902,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "db",
+    "time" : {
+      "start" : 1621190937902,
+      "stop" : 1621190937909,
+      "duration" : 7
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "stop::fin",
+    "time" : {
+      "start" : 1621190951477,
+      "stop" : 1621190954113,
+      "duration" : 2636
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1621190951476,
+      "stop" : 1621190951476,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "test_add_group"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-UEDOSSM"
+  }, {
+    "name" : "thread",
+    "value" : "18788-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.test_add_group"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "json_groups",
+    "value" : "None:name<o? ok q:headerTHwK7) |a'1~|P {Wt:footer{"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "104655d191b665f5.json",
+  "parameterValues" : [ "None:name<o? ok q:headerTHwK7) |a'1~|P {Wt:footer{" ]
+}

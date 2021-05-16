@@ -1,0 +1,231 @@
+{
+  "uid" : "e638814ad1e75c8a",
+  "name" : "test_add_group[None:namejATA0:header6; iQ!fM:J 9(!)v/rA:footer|/c$   egx:5 M q]",
+  "fullName" : "test.test_add_group#test_add_group",
+  "historyId" : "753d589908427a7d7a35d2be83e09f01",
+  "time" : {
+    "start" : 1621192013959,
+    "stop" : 1621192015040,
+    "duration" : 1081
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "stop",
+    "time" : {
+      "start" : 1621192006120,
+      "stop" : 1621192006120,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1621192013913,
+      "stop" : 1621192013959,
+      "duration" : 46
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "db",
+    "time" : {
+      "start" : 1621192006120,
+      "stop" : 1621192006128,
+      "duration" : 8
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Given a group list",
+      "time" : {
+        "start" : 1621192013959,
+        "stop" : 1621192013962,
+        "duration" : 3
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When I add a group \"None:namejATA0:header6; iQ!fM:J 9(!)v/rA:footer|/c$   egx:5 M q\" to the list",
+      "time" : {
+        "start" : 1621192013962,
+        "stop" : 1621192015035,
+        "duration" : 1073
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ {
+        "name" : "group",
+        "value" : "None:namejATA0:header6; iQ!fM:J 9(!)v/rA:footer|/c$   egx:5 M q"
+      } ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Then the new group list is equal to the old list with the added group",
+      "time" : {
+        "start" : 1621192015036,
+        "stop" : 1621192015039,
+        "duration" : 3
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 3,
+    "hasContent" : true,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ {
+    "name" : "stop::fin",
+    "time" : {
+      "start" : 1621192019369,
+      "stop" : 1621192022015,
+      "duration" : 2646
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1621192019368,
+      "stop" : 1621192019368,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "test_add_group"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-UEDOSSM"
+  }, {
+    "name" : "thread",
+    "value" : "16284-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.test_add_group"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "json_groups",
+    "value" : "None:namejATA0:header6; iQ!fM:J 9(!)v/rA:footer|/c$   egx:5 M q"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "db41821010ae7303",
+      "status" : "broken",
+      "statusDetails" : "AttributeError: module 'pytest' has no attribute 'allure'",
+      "time" : {
+        "start" : 1621191651074,
+        "stop" : 1621191651074,
+        "duration" : 0
+      }
+    }, {
+      "uid" : "3d80ab061850beb3",
+      "status" : "broken",
+      "statusDetails" : "AttributeError: module 'pytest' has no attribute 'alluer'",
+      "time" : {
+        "start" : 1621191622224,
+        "stop" : 1621191622224,
+        "duration" : 0
+      }
+    }, {
+      "uid" : "6efa671504070d00",
+      "status" : "passed",
+      "time" : {
+        "start" : 1621190946163,
+        "stop" : 1621190947163,
+        "duration" : 1000
+      }
+    }, {
+      "uid" : "88bc946a9e972ca",
+      "status" : "passed",
+      "time" : {
+        "start" : 1621190687260,
+        "stop" : 1621190688265,
+        "duration" : 1005
+      }
+    }, {
+      "uid" : "ae5db097a855377b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1621190666298,
+        "stop" : 1621190667495,
+        "duration" : 1197
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "e638814ad1e75c8a.json",
+  "parameterValues" : [ "None:namejATA0:header6; iQ!fM:J 9(!)v/rA:footer|/c$   egx:5 M q" ]
+}
