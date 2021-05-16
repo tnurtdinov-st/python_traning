@@ -21,6 +21,7 @@ def test_add_contact_to_group(app, db):
     #Если по какой-то причине get_groups_without_contact вернет 0, означает ВСЕ контакты вне групп и можно брать любой рандомный
     if len(db.get_groups_without_contact(contact.id)) == 0:
         group = random.choice(db.get_group_list)
+    #В противном случае берем get_groups_without_contact
     else:
         group = random.choice(db.get_groups_without_contact(contact.id))
     old_contact = db.get_contacts_in_group(group.id)
