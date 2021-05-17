@@ -2,6 +2,7 @@ import pymysql.cursors
 from model.group import Group
 from model.contact import Contact
 import allure
+import time
 
 class DbFixture:
     def __init__(self, host, name, user, password):
@@ -38,6 +39,7 @@ class DbFixture:
         return list
 
     def get_contact_list(self):
+        time.sleep(3)
         list = []
         cursor = self.connection.cursor()
         try:
