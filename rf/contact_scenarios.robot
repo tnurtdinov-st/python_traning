@@ -34,5 +34,5 @@ Edit contact
     ${new_contact}=  Edited Contact  firstname1  middlename1  lastname1  nickname1  title1  company1   address1  home1  11111111   1111111  111111  test@te.te    test@te.te     test@te.te    11111.1111  111111   11111111  111111  1  January   1991  1  January  2001
     Update Contact  ${new_contact}
     ${new_list}=  Get Contact List
-    ${old_list}=  Edit Old List  ${old_list}  ${new_contact}
+    ${old_list}=  Update Old List  ${old_list}  ${new_contact}
     Contact Lists Should Be Equal  ${new_list}  ${old_list}

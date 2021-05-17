@@ -80,7 +80,7 @@ class AddressBook:
         self.fixture.contact.update()
         time.sleep(5)
 
-    def edit_old_list(self, old_contact,  contact):
+    def update_old_list(self, old_contact,  contact):
         for i in old_contact:
             if i.id==contact.id:
                 i.firstname = contact.firstname
