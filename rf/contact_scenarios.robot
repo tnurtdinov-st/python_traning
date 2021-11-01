@@ -26,7 +26,7 @@ Delete contact
     Contact Lists Should Be Equal  ${new_list}  ${old_list}
 
 Edit contact
-    ${old_list}=  Get Contact List
+    ${old_list}=  Get Contact List2
     ${len}=  Get Length  ${old_list}
     ${index}=  Evaluate  random.randrange(${len})  random
     ${contact}=  Get From List  ${old_list}  ${index}
