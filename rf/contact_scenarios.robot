@@ -21,6 +21,7 @@ Delete contact
     ${index}=  Evaluate  random.randrange(${len})  random
     ${contact}=  Get From List  ${old_list}  ${index}
     Delete Contact  ${contact}
+    Delete Contact  ${contact}
     ${new_list}=  Get Contact List
     Remove Values From List  ${old_list}  ${contact}
     Contact Lists Should Be Equal  ${new_list}  ${old_list}
